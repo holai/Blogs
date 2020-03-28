@@ -1,0 +1,64 @@
+@import 'restes';
+
+  // 给 导航栏 留距离
+  // body{
+  //   margin-top: 1.090909rem;  
+  // }
+
+  //遮罩层       修复不能全部遮罩
+  div.el-loading-mask{
+      position: fixed;
+      z-index: 2;
+  }
+
+  // element  v-image加载失败的填充
+  .el-image .el-image__error {
+    background-color: rgba(0, 0, 11, .8) !important;
+  }
+
+  // 对 live2d  插件   工具栏 ie 出现 height auto  高度满 的设置
+  .live2d-tools{
+	  height: 56px !important;
+  }
+
+// 关于我 card padding
+.block{
+  .el-card__body{
+    padding: 0.363636rem ;
+  }
+}
+
+ // 首页  图片 hover 放大
+.blogs .item{
+  &:hover img{
+    transform: scale(1.2, 1.2);
+  }
+  img{
+    transition: transform 1.5s;
+  }
+}
+
+
+
+
+
+// admin的 关于我  添加弹窗
+  @media (max-width: 663px) {
+    #dialog{
+      .el-dialog{
+        width: 80%;
+      }
+    }
+  }
+
+ // admin的 关于我  添加弹窗
+   @media (max-width: 992px) {
+     #dialog{
+        .el-form-item__label{
+          width: auto !important;
+        }
+        .el-form-item__content{
+          margin-left: 0 !important;
+        }
+     }
+   }

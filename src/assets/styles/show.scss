@@ -1,0 +1,149 @@
+// 富文本编辑器
+.ql-container{
+  overflow: overlay;
+
+}
+.ql-editor,#editor{
+    color: #4d4d4d;
+    // font-size:0.254545rem;
+    word-break: break-word;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.8;
+  p{
+    margin-top: 0;
+    margin-bottom: 20px;
+    word-break: break-word;
+    // text-indent: 2.5em;
+    height: auto;
+    line-height: 1.8;
+	// overflow: auto;
+  }
+  strong{
+     font-weight: bold;
+  }
+  em{
+    font-style: italic;
+  }
+  ol,ul{
+    margin-block-start: .5em;
+    margin-block-end: .5em;
+    padding-left: 1.5em;
+    list-style-type: decimal;
+    line-height: 1.5em;
+    li{
+     padding-left: 1.5em;
+     font-size: 16px;
+     line-height: 1.8;
+    }
+  }
+  li:not(.ql-direction-rtl):before{
+    margin-left: -1.5em;
+    margin-right: .3em;
+    text-align: right;
+  }
+  li:before{
+    display: inline-block;
+    white-space: nowrap;
+    width: 1.2em;
+  }
+  ul{
+    li{
+      // margin-left: 3em;
+    }
+    li:before{
+      content: "\2022";
+    }
+  }
+  ol{
+    li{
+      padding-left: 2em;
+      counter-reset: a b c d e f g h i;
+      counter-increment: j;
+    }
+    li:before{
+      content: counter(j,decimal) ". ";
+    }
+  }
+  sub{
+    vertical-align: sub;
+    font-size: smaller;
+  }
+  sup{
+    vertical-align: super;
+    font-size: smaller;
+  }
+  .ql-align-center{
+    text-align:center;
+  }
+  @for $i from 1 through 9 {
+  .ql-indent-#{$i}:not(.ql-direction-rtl) { margin-left: 3em * $i; }
+  }
+  .ql-align-right {
+    text-align: right;
+  }
+  .ql-size-small {
+    font-size: 0.75em;
+  }
+  .ql-size-large {
+    font-size: 1.5em;
+  }
+  .ql-size-huge {
+    font-size: 2.5em;
+  }
+  h6 {
+    font-size: 0.67em;
+  }
+  h5 {
+      font-size: 0.83em;
+  }
+  h4 {
+    font-size: 1em;
+  }
+  h3 {
+    font-size: 1.17em;
+  }
+  h2 {
+    font-size: 1.5em;
+  }
+  h1 {
+    font-size: 2em;
+  }
+  a {
+    text-decoration: underline;
+    color: #06c;
+  }
+  // pre.ql-syntax {
+  //   // background-color: #23241f;
+  //   // color: #f8f8f2;
+  //   overflow: scroll;
+  // }
+  pre {
+    // white-space: pre-wrap;
+    // margin-bottom: 5px;
+    // margin-top: 5px;
+    // padding: 5px 10px;
+    // border-radius: 3px;
+
+        word-wrap: normal;
+        word-break: break-all;
+        white-space: pre;
+        overflow-x: scroll;
+        overscroll-behavior-x: contain;
+        margin-top: 0;
+        margin-bottom: 20px;
+        border-radius: 4px;
+        z-index: 0;
+        padding: 1em;
+        line-height: 1.5;
+        color: #ccc;
+        background: #2d2d2d;
+  }
+  blockquote {
+    border-left: 4px solid #ccc;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    padding-left: 16px;
+  }
+
+}
