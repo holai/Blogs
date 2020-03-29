@@ -1,6 +1,7 @@
 # my-index
 
-> this is my index
+> this is my blogs
+> Project Address : 47.100.99.23
 
 ## Build Setup
 
