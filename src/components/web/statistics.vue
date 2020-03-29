@@ -8,7 +8,7 @@
       </el-input>
     </div>
     <div class="shadow stat">
-      <img src="@/assets/tx.png" width="80px" alt="后来的路" />
+      <img @click="xz" :class="xzdh" src="@/assets/tx.png" width="80px" alt="后来的路" />
       <!-- <el-avatar :size="50" :src="txUrl"></el-avatar> -->
       <div class="text">
         <span>{{this.articleCount}}</span>篇文章,<span>{{this.browseCount}}</span>次访问,<span>{{commentCount}}</span>条评论
@@ -48,6 +48,7 @@
         browseCount:200, //浏览总数
 		commentCount:22,		// 总
         search_value:"", // 搜素框的值
+		xzdh:""
       }
     },
     props:{
@@ -93,7 +94,11 @@
          .catch(error=>{
            console.log(error)
          })
-      }
+      },
+	  xz(){
+		  //图片旋转
+		  this.xzdh=(this.xzdh=='' ? 'xz' : '');
+	  }
     },
     created() {
       this.$axios.get('/statistics')
@@ -136,6 +141,13 @@
       flex-direction: column;
       align-items: center;
       justify-content: space-between;
+	  img{
+		  cursor: pointer;
+	  }
+	  .xz{
+		  animation:myfirst 3s ease .1s infinite alternate;
+	  }
+
       .text{
         color: #606266;
         span{
@@ -155,7 +167,10 @@
     }
     .borwse{
       flex-direction: column;
+	  display: flex;
+	  align-items: center;
       h6{
+		width: 100%;
         font-weight: 700;
         font-size: 0.236363rem;
         line-height: 2em;
@@ -164,13 +179,30 @@
         font-size: 0.254545rem;
         padding-left: 0.181818rem;
         li{
-          line-height: 1.5em;
+          line-height: 1.8;
           cursor:pointer;
-          text-decoration: underline;
         }
       }
     }
   }
+  
+
+	  @keyframes myfirst
+	  {
+	  	0%   {transform: rotate(0deg);}
+		// 5%   {transform: rotate(25deg);}
+		// 10%   {transform: rotate(45deg);}
+		// 15%   {transform: rotate(65deg);}
+		// 20%   {transform: rotate(85deg);}
+	 //  	25%  {transform: rotate(100deg);}
+		// 30%   {transform: rotate(120deg);}
+		// 40%   {transform: rotate(140deg);}
+	 //  	50%  {transform: rotate(160deg);;}
+		// 60%   {transform: rotate(200deg);}
+	 //  	75%  {transform: rotate(250deg);;}
+		// 85%   {transform: rotate(300deg);}
+	  	100% {transform: rotate(360deg);;}
+	  }
   // @media (max-width: 992px) {
   //   .else{
   //     display: none;
