@@ -4,7 +4,7 @@
        <transition name="el-zoom-in-center"  >
       <!-- 筛选标签 -->
       <div class="lable" >
-        <el-tag @click="lablesactive('')" :class="(count=='') ? 'lablecolor' : '0'">全部</el-tag>
+        <!-- <el-tag @click="lablesactive('')" :class="(count=='') ? 'lablecolor' : '0'">全部</el-tag> -->
         <el-tag
           v-for="(i,index) in lables" :key="index"
           @click="lablesactive(lables[index])"
@@ -72,6 +72,7 @@
     methods: {
       //筛选 类型
       lablesactive(e) {
+		if(e==this.count){e='';};
         this.is_search=false; // 不是搜索
         this.$axios.get('/articles?mode=-1&page=-1&type=' + e + "&size=" +this.page_size)
           .then(res => {
