@@ -254,7 +254,7 @@
       color: #4d4d4d;
 	  box-sizing: border-box;
 	  margin: 0.201818rem;
-	  margin-bottom: 1.818181rem;
+	  // margin-bottom: 1.818181rem;
 	.cz{
 		box-sizing: border-box;
 		width: 9rem;

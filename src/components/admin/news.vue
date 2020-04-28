@@ -202,29 +202,29 @@ export default {
       // }
       // Quill.register(Mycode, true);
 
-      quillConfig.initButton(); // 初始化工具栏配置
-      if(this.$route.params.id){
-        	this.$axios.get("/article?id="+this.$route.params.id)
-          .then(res=>{
-            if(res.data.code==0){
-              this.isroutr=true;
-                this.my_data=res.data.data;
-            }
-          })
-          .catch(error=>{
-            console.log(error)
-          })
-      }else{
-         	this.$axios.get("/labels")
-         	.then(res=>{
-         		if(res.data.code==0){
-         				this.selectOptions=res.data.data;
-         		}
-         	})
-         	.catch(error=>{
-         		console.log(error)
-         	})
-      }
+        quillConfig.initButton(); // 初始化工具栏配置
+        if(this.$route.params.id){
+            this.$axios.get("/article?id="+this.$route.params.id)
+            .then(res=>{
+              if(res.data.code==0){
+                this.isroutr=true;
+                  this.my_data=res.data.data;
+              }
+            })
+            .catch(error=>{
+              console.log(error)
+            })
+        }
+        this.$axios.get("/labels")
+        .then(res=>{
+          if(res.data.code==0){
+              this.selectOptions=res.data.data;
+          }
+        })
+        .catch(error=>{
+          console.log(error)
+        })
+  
     },
 
 }

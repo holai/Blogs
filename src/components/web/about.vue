@@ -3,7 +3,7 @@
 	<div class="intro">
     <div style="height: 100px;width: 100px;margin: 0 auto;border:1px #eee solid;border-radius: 100%;">
     <transition name="el-zoom-in-bottom">
-      <img class="duration"  v-show="txdh" src="@/assets/tx.png" />
+      <img class="duration"  v-show="txdh"  src="@/assets/tx.png" alt="后来的路"  />
     </transition>
     </div>
 		<div class="introtext">
@@ -55,10 +55,14 @@ export default {
     .catch(error=>{
       console.log(error);
     })
+
+
   },
   mounted() {
     setTimeout(()=>{this.txdh = true;},200);
     setTimeout(()=>{this.lbdh = true;},500);
+
+
   }
 }
 </script>
@@ -71,8 +75,11 @@ export default {
 }
 
 .block{
+  border-radius: 4px;
+  background: #fff;
 	margin: 20px auto;
-	max-width: 800px;
+	// max-width: 800px;
+  max-width: 1000px;
   padding: 0.272727rem;
 	.intro{
 		text-align: center;
@@ -91,6 +98,8 @@ export default {
 	}
   .el-timeline{
     padding:0.292727rem 0.21818rem;
+    max-width: 700px;
+    margin: 0 auto;
   }
 	.title{
 		font-weight: 500;

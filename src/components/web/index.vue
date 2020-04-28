@@ -68,7 +68,7 @@ export default {
 	components:{
 		topnav,bottomfooter,live2d
 	},mounted(){
-		
+
       //绑定 滚动 事件
       this.$refs.box.addEventListener("scroll", this.handleScroll);
         // 绑定加载完成后 设置 box 的高度
@@ -83,10 +83,6 @@ export default {
     }
 
       this.navAm=true;
-
-
-
-
   },
 
 }
@@ -109,5 +105,14 @@ export default {
 
   #box{
     // overflow: auto;
+    background: #f9f9f9;
+    padding-top: 0.3rem;
+  }
+  
+  @media (max-width: 795px) {
+    #box{
+      padding-top: 0rem;
+    }
+  
   }
 </style>

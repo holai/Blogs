@@ -41,7 +41,7 @@ export default {
       this.islive2d=true;
       this.isDialogue=true;
       // this.modelPath = 'https://unpkg.com/live2d-widget-model-shizuku@1.0.5/assets/shizuku.model.json';
-      this.modelPath = 'http://47.100.99.23/src/assets//model/Tia/model.json'
+      this.modelPath = 'https://my.houlai.fun:444/src/assets/model/Tia/model.json'
     },2000);
 
     setInterval(()=>{
@@ -67,7 +67,7 @@ export default {
         //   break
         case '换装':
           let con = Math.floor(Math.random()*(76+1));
-          this.$refs.l2dMange.setImgPath('http://47.100.99.23/src/assets/model/Tia/textures/'+con+'.png')  //这个是换衣服地址
+          this.$refs.l2dMange.setImgPath('https://my.houlai.fun:444/src/assets/model/Tia/textures/'+con+'.png')  //这个是换衣服地址
           break
         case '保存':
           this.$refs.l2dMange.save(`live2d-${Date.now()}.png`)
@@ -133,7 +133,7 @@ export default {
   .dialogue-live2d
     box-shadow 0 1px 2px rgba(0, 0, 0, .2)
     background-color rgba(241, 247, 254, 0.8)
-    min-height 30px;
     text-align center;
     line-height 30px;
+    min-height: auto !important;
 </style>

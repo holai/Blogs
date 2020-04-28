@@ -5,7 +5,7 @@
       <article class="item"  v-for="(content,index) in blogs" :key="index"  >
         <i v-if="isadmin" class="el-icon-circle-close close" @click.stop="delect(index,content.id,content.image)"></i>
         <router-link :to="!isadmin ? ({name: 'essay', query: { id: content.id }}) : ({name: 'news', params: { id: content.id }})" class="box">
-          <figure is="el-image" lazy v-if="content.image!=''" class="image" :src="content.image" :alt="content.title">
+          <figure is="el-image" lazy v-if="content.image!=''" class="image" :src="isUrl+content.image" :alt="content.title">
               <div slot="placeholder" class="image-slot">
                 加载中<span class="dot">...</span>
               </div>
@@ -37,7 +37,8 @@
       return {
         se:"",  // 定时器 执行
         out:"", // 定时器 循环
-        aritcledh:true    //显示动画
+        aritcledh:true,    //显示动画
+        isUrl:"https://my.houlai.fun:444/"
       }
     },props:{
       "blogs":"",
@@ -67,7 +68,7 @@
 
       },      // 删除 文章
       delect(index,id,imagesrc) {
-        this.$confirm('此操作将永久删除, 是否继续?', '提示', {
+        this.$confirm('此操作将永久删除文章, 是否继续?', '提示', {
           confirmButtonText: '确定',
           cancelButtonText: '取消',
           type: 'warning'
@@ -93,8 +94,8 @@
         let content= document.querySelector(".content");
         let item = document.querySelector(".item");
         content.style.height=item.offsetHeight*this.blogs.length+320+"px"
-		
-		
+
+
          // content.style.height=item.offsetHeight*12+"px";
       }
 
@@ -172,15 +173,17 @@
         flex-direction: column;
         overflow: hidden;
         .title{
-          font-size:0.386363rem;
+          // font-size:0.386363rem;
+          font-size: 0.327272rem;//18px
           line-height: 2em;
           font-weight: 700;
         }
         .brief{
           flex: 1;
           min-height: 1.2em;
-          line-height: 1.2em;
+          line-height: 1.5;
           font-size:0.240909rem;
+          // font-size: 0.254545rem;
           overflow: hidden;
           text-overflow: ellipsis;
           word-break: break-all;

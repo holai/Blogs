@@ -1,42 +1,42 @@
 <template>
      <transition name="el-zoom-in-center"  >
-    <div  class="blogs " :style="isadmin ? 'width:100%' : '' ">
-       <transition name="el-zoom-in-center"  >
-      <!-- 筛选标签 -->
-      <div class="lable" >
-        <!-- <el-tag @click="lablesactive('')" :class="(count=='') ? 'lablecolor' : '0'">全部</el-tag> -->
-        <el-tag
-          v-for="(i,index) in lables" :key="index"
-          @click="lablesactive(lables[index])"
-          :class="count==lables[index] ? 'lablecolor' : '0'"
-          :closable="isadmin" :disable-transitions="false"
-          @close="open(index)">{{i}}</el-tag>
-        <el-input
-          class="input-new-tag"
-          v-if="inputVisible"
-          v-model="inputValue"
-          ref="saveTagInput"
-          size="small"
-          @keyup.enter.native="handleInputConfirm"
-          @blur="handleInputConfirm"
-        >
-        </el-input>
-        <el-button v-if="isadmin && !inputVisible"  class="button-new-tag" size="small" @click="showInput">+ New Tag</el-button>
-      </div>
-      </transition>
+    <div   class="blogs " :style="isadmin ? 'width:100%;flex-direction: column;' : '' ">
 
-      <!-- 主要显示内容 -->
-      <div class="content" v-loading="loading_articles">
-        <div class="hint">
-          <!-- 搜索内容显示 -->
-          <div class="search" v-if="is_search"> 您搜索内容为：<span style="color: #F56C6C;">"{{search_value}}"</span></div>
-          <!-- 如果为 文章列表 为空时显示 -->
-          <div class="ts" v-if="blogs.length<=0">这里什么也没有o</div>
-          <article-item   :isadmin="isadmin" :blogs="blogs" v-if="blogs.length>0" />
+      <div class="leftBox" v-loading="loading_articles">
+        <!-- 筛选标签 -->
+        <div class="lable" >
+          <!-- <el-tag @click="lablesactive('')" :class="(count=='') ? 'lablecolor' : '0'">全部</el-tag> -->
+          <el-tag
+            v-for="(i,index) in lables" :key="index"
+            @click="lablesactive(lables[index])"
+            :class="count==lables[index] ? 'lablecolor' : '0'"
+            :closable="isadmin" :disable-transitions="false"
+            @close="open(index)">{{i}}</el-tag>
+          <el-input
+            class="input-new-tag"
+            v-if="inputVisible"
+            v-model="inputValue"
+            ref="saveTagInput"
+            size="small"
+            @keyup.enter.native="handleInputConfirm"
+            @blur="handleInputConfirm"
+          >
+          </el-input>
+          <el-button v-if="isadmin && !inputVisible"  class="button-new-tag" size="small" @click="showInput">+ New Tag</el-button>
         </div>
-        <!--  右侧 统计 -->
-        <statistics  v-if="!this.isadmin" :page_size="page_size" @search="search" />
+
+
+          <div class="hint">
+            <!-- 搜索内容显示 -->
+            <div class="search" v-if="is_search"> 您搜索内容为：<span style="color: #F56C6C;">"{{search_value}}"</span></div>
+            <!-- 如果为 文章列表 为空时显示 -->
+            <div class="ts" v-if="blogs.length<=0">这里什么也没有o</div>
+            <article-item   :isadmin="isadmin" :blogs="blogs" v-if="blogs.length>0" />
+          </div>
+
       </div>
+      <!--  右侧 统计 -->
+      <statistics  v-if="!this.isadmin" @search="lablesactive" />
 
       <el-pagination id="pageination" background :hide-on-single-page="true" class="page" layout="prev, pager, next"
         :page-size="page_size" :total="page_max" @current-change="pageClick">
@@ -71,25 +71,42 @@
     },
     methods: {
       //筛选 类型
-      lablesactive(e) {
-		if(e==this.count){e='';};
-        this.is_search=false; // 不是搜索
-        this.$axios.get('/articles?mode=-1&page=-1&type=' + e + "&size=" +this.page_size)
-          .then(res => {
-            if (res.data.code == 0) {
+      lablesactive(e,f = false) {
+        let mode = -1;
+        if(e==this.count){e='';}; //是否重复点击了这个标签 是的话 就取消选中
+        if(f){
+          this.count = '';   //取消标签
+          this.search_value=e;
+          mode = -2;
+        }
+        this.is_search=f; // 是否显示搜索
+        // get 方式 有些特殊字符 不能提交 所以使用 post
+         var params = new URLSearchParams();
+         params.append('mode', mode);
+         params.append('page', "-1");
+         params.append('type', e);
+         params.append('size',this.page_size);
+        this.$axios({
+          method: 'post',
+          url:"/articles",
+          data:params,
+        }).then(res=>{
+            if(res.data.code==0){
               this.loading_articles=false;
               this.page_max = res.data.data.count;
               this.blogs = res.data.data.list;
+            }else{
+              this.$message.error(res.data.data);
             }
-          })
-          .catch(error => {
-            console.log(error);
-          })
+        })
+        .catch(error=>{
+          console.log(error)
+        })
         this.count = e;
       },
       // 翻页  e为页数
       pageClick(e) {
-        let mode=0;
+        let mode=-1;
         if(this.is_search){mode=-2};
         this.$axios.get('/articles?mode='+mode+'&page=' + e + '&type=' + this.count + "&size=" + this.page_size)
           .then(res => {
@@ -103,7 +120,7 @@
       },
       open(index) {
         // 删除标签
-        this.$confirm('此操作将永久删除, 是否继续?', '提示', {
+        this.$confirm('此操作将永久删除标签 , 是否继续?', '提示', {
           confirmButtonText: '确定',
           cancelButtonText: '取消',
           type: 'warning'
@@ -148,17 +165,9 @@
         }
         this.inputVisible = false;
         this.inputValue = '';
-      },
-      search(data){
-        console.log(data);
-        this.is_search=true;
-        this.page_max = data.count;
-        this.blogs = data.list;
-        this.search_value=data.search_value;
       }
     },
     mounted() {
-
        // 请求 标签
       this.$axios.get("/labels")
         .then(res => {
@@ -191,10 +200,24 @@
       -o-transition-duration: 1.2s; /* Opera */
     }
   .blogs {
+
+	  // background: #fff;
+    display: flex;
+    // flex-direction: column;
+	  padding: 0.4rem;
+	  padding-top: 0;
     margin: 0 auto;
     max-width: 20.8rem;
     position: relative;
     overflow-y: auto;
+    .leftBox{
+      min-width: 0;
+      background: #fff;
+      padding: 0.2rem;
+      border-radius: 4px;
+      width: 100%;
+      box-sizing: border-box;
+    }
     .lable {
       text-align: left;
       border-bottom: 1px solid #f56c6c;
@@ -202,7 +225,7 @@
       display: flex;
       flex-wrap: wrap;
       padding: 0.090909rem;
-      padding-top: 0.363636rem;
+      // padding-top: 0.363636rem;
       font-size:0.181818rem;
       .el-tag {
         margin:.1rem;
@@ -211,9 +234,7 @@
         font-size: .2.2rem;
         // line-height: .7rem;
         // height: .7rem;
-        &:nth-child(1){
-          margin-right: 0.363636rem;
-        }
+
       }
       .lablecolor {
         background-color: rgba(245, 108, 108, .1);
@@ -222,29 +243,28 @@
       }
     }
     // 主页 主页展示
-    .content{
+
+    .hint{
+      flex:1;
+      width: 100%;
       display: flex;
-      .hint{
-        flex:1;
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        overflow: auto;
-        //搜索内容显示
-        .search{
-          margin: 20px;
-          font-size: 0.254545rem;
-        }
-        // 内容无时提示
-        .ts{
-          color: #444444;
-          font-weight: 200;
-          margin-top: 3.636363rem;
-          font-size: 0.427272rem;
-          text-align: center;
-        }
+      flex-direction: column;
+      overflow: hidden;
+      //搜索内容显示
+      .search{
+        margin: 20px;
+        font-size: 0.254545rem;
+      }
+      // 内容无时提示
+      .ts{
+        color: #444444;
+        font-weight: 200;
+        margin-top: 3.636363rem;
+        font-size: 0.427272rem;
+        text-align: center;
       }
     }
+
 
     // admin
     .button-new-tag {
@@ -265,6 +285,14 @@
       font-size: .5rem;
     }
 
+    .else{
+      border-radius: 4px;
+      background: #fff;
+      display: inline-table;
+      margin-top:0 ;
+      padding: 0.2rem;
+      min-width: 5rem;
+    }
     // page
     .page{
       text-align: center;
@@ -279,14 +307,23 @@
   // }
 
   @media (max-width: 992px) {
-    .else{
-      flex: .4;
+    .blogs {
+       padding: 0;
+      .else{
+        min-width: 3rem
+      }
     }
   }
   @media (max-width: 795px) {
-    .else{
-      display: none;
+    .blogs{
+      .leftBox{
+        padding: 0.1rem;
+      }
+      .else{
+        display: none;
+      }
     }
+
   }
 
   @media (max-width: 470px) {

@@ -1,23 +1,28 @@
 // 富文本编辑器
 .ql-container{
   overflow: overlay;
-
 }
 .ql-editor,#editor{
     color: #4d4d4d;
-    // font-size:0.254545rem;
     word-break: break-word;
-    font-size: 16px;
+    font-size: 0.272727rem;
+    // font-size: 0.254545rem;  //14px
+    // font-size: 0.236363rem;
     font-weight: 400;
     line-height: 1.8;
+    padding-top: 0.363636rem;
   p{
     margin-top: 0;
-    margin-bottom: 20px;
+    margin-bottom: 0.363636rem;
     word-break: break-word;
     // text-indent: 2.5em;
     height: auto;
-    line-height: 1.8;
+    line-height: 1.6;
 	// overflow: auto;
+  }
+  img{
+	  max-width: 100% !important;
+	  height: auto;
   }
   strong{
      font-weight: bold;
@@ -28,13 +33,10 @@
   ol,ul{
     margin-block-start: .5em;
     margin-block-end: .5em;
-    padding-left: 1.5em;
     list-style-type: decimal;
-    line-height: 1.5em;
+    line-height: 1.7em;
     li{
      padding-left: 1.5em;
-     font-size: 16px;
-     line-height: 1.8;
     }
   }
   li:not(.ql-direction-rtl):before{
@@ -131,10 +133,12 @@
         overflow-x: scroll;
         overscroll-behavior-x: contain;
         margin-top: 0;
-        margin-bottom: 20px;
+        margin:0rem;
+        margin-bottom: 0.363636rem;
         border-radius: 4px;
         z-index: 0;
         padding: 1em;
+        padding-left: 0.545454rem;
         line-height: 1.5;
         color: #ccc;
         background: #2d2d2d;

@@ -46,58 +46,27 @@
         ],
         articleCount:18, // 文章总数
         browseCount:200, //浏览总数
-		commentCount:22,		// 总
+        commentCount:22,		// 总
         search_value:"", // 搜素框的值
-		xzdh:""
+        xzdh:"xzdh"
       }
     },
     props:{
-      page_size: {    //请求一页的数量
-        type: Number,
-        default: 10
-      },
       isSeek:{
         type:Boolean,
         default:true
       }
-      // articleCount:{
-      //   type:Number,
-      //   default:0
-      // },
 
     },
     methods:{
       //向父组件传递
       //搜索
       search(){
-        // this.$axios.get('/articles?mode=-2&page=-1&type='+this.search_value.replace("#",)+"&size=" +this.page_size)
-      		// get 方式 有些特殊字符 不能提交
-          var params = new URLSearchParams();
-      		params.append('mode', "-2");
-      		params.append('page', "-1");
-          params.append('type', this.search_value);
-          params.append('size',this.page_size);
-      		this.$axios({
-      			method: 'post',
-      			url:"/articles",
-      			data:params,
-      		}).then(res=>{
-           if(res.data.code==0){
-             res.data.data.search_value=this.search_value;
-             this.$emit("search",res.data.data);
-              // this.page_max = res.data.data.count;
-              // this.blogs = res.data.data.list;
-           }else{
-             this.open(res.data.data);
-           }
-         })
-         .catch(error=>{
-           console.log(error)
-         })
+        this.$emit("search",this.search_value,true);
       },
 	  xz(){
 		  //图片旋转
-		  this.xzdh=(this.xzdh=='' ? 'xz' : '');
+		  this.xzdh=(this.xzdh=='xzdh' ? 'xz' : 'xzdh');
 	  }
     },
     created() {
@@ -106,7 +75,7 @@
           if (res.data.code == 0) {
             this.articleCount = res.data.data.article;
             this.browseCount = res.data.data.browse;
-			this.commentCount = res.data.data.comment;
+            this.commentCount = res.data.data.comment;
             this.articlelist = res.data.data.list;
           }
         }).catch(error => {
@@ -124,6 +93,7 @@
     margin: 0.363636rem;
     .shadow{
       font-size: 0.218181rem;
+      // font-size: 0.254545rem;
       display: flex;
       margin-bottom: 20px;
       padding: 10px 20px;
@@ -144,9 +114,14 @@
 	  img{
 		  cursor: pointer;
 	  }
-	  .xz{
-		  animation:myfirst 3s ease .1s infinite alternate;
+
+	  .xzdh:hover{
+		  animation:myfirst 5s ease .1s infinite ;
 	  }
+
+    .xz{
+      animation:myfirst 2s  linear .1s infinite ;
+    }
 
       .text{
         color: #606266;
@@ -167,16 +142,17 @@
     }
     .borwse{
       flex-direction: column;
-	  display: flex;
-	  align-items: center;
+      display: flex;
+      align-items: center;
       h6{
-		width: 100%;
-        font-weight: 700;
+        width: 100%;
+        font-weight: 500;
         font-size: 0.236363rem;
         line-height: 2em;
       }
       ul{
-        font-size: 0.254545rem;
+        // font-size: 0.254545rem;
+        font-size: 0.236363rem;
         padding-left: 0.181818rem;
         li{
           line-height: 1.8;
@@ -185,7 +161,7 @@
       }
     }
   }
-  
+
 
 	  @keyframes myfirst
 	  {

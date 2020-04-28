@@ -13,6 +13,7 @@
 		clear: both;
 		text-align: center;
 		color: #CFD8DC;
+    margin-top: .2rem;
 /*    position: absolute;
     bottom: 0;
     width: 100%; */

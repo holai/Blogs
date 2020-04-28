@@ -1,10 +1,10 @@
 <template>
 	<div class="acticles" v-loading="loading_article">
 		<div style="position: relative;">
-			<el-page-header style="position: absolute;" @back="goBack"></el-page-header>
-			<h2 class="title">
+			<el-page-header class="back" style="position: absolute;font-size: 0.236363rem;" @back="goBack"></el-page-header>
+			<h1 class="title">
 				{{data.title}}
-			</h2>
+			</h1>
 		</div>
 
 		<div class="mate">
@@ -22,7 +22,10 @@
 				<!-- <hr class="myhr"/> -->
 
 		  <!-- <el-divider></el-divider> -->
-		<div class="ql-editor" v-html='(data.text)'  id="editor" > </div>
+		<div>
+      <div class="ql-editor" v-html='(data.text)'  id="editor" > </div>
+      <!-- <el-tree :data="date" :props="defaultProps" @node-click="handleNodeClick"></el-tree> -->
+    </div>
 
 		  <!-- 分享 -->
 	<!--        <div class="social-share"
@@ -81,6 +84,19 @@ const highlightCode = () => {
         next:"",
         loading_article:true,
         // x:"d ",
+        date: [{
+                  label: '一级 1',
+                  children: [{
+                    label: '二级 1-1',
+                    children: [{
+                      label: '三级 1-1-1'
+                    }]
+                  }]
+        }],
+        defaultProps: {
+          children: 'children',
+          label: 'label'
+        }
       }
 		},
     components: {
@@ -110,6 +126,9 @@ const highlightCode = () => {
             break;
         }
         window.open(typeUrl+'?url='+url+'&title='+title+'&desc='+desc+'&summary='+this.data.title+'&site=http%3A%2F%2F47.100.99.23'+pics);
+      },
+       handleNodeClick(data) {
+          console.log(data);
       }
     },
     mounted(){
@@ -155,12 +174,15 @@ const highlightCode = () => {
 </script>
 <style lang="scss" scoped="scoped">
 	.acticles{
+    border-radius: 4px;
+    background: #fff;
+    padding: 0.4rem;
     padding-top: 0.65rem;
     padding-left: 0.18rem;
     padding-right: 0.18rem;
     box-sizing: border-box;
-		margin: 0 auto;
-		max-width: 960px;
+	margin: 0 auto;
+	max-width: 960px;
     width: 65%;
     min-width: 640px;
     .back{
@@ -169,9 +191,9 @@ const highlightCode = () => {
       align-self: center;
     }
 		.title{
-			font-size: 30px;
-      font-weight: 700;
-      word-break: break-word;
+			// font-size: 0.545454rem;
+		  font-size: 0.50909rem;  //28px
+		  word-break: break-word;
 			width:100%;
 			text-align:center;
 		}
@@ -231,20 +253,21 @@ const highlightCode = () => {
       font-weight: 600;
       box-sizing: border-box;
       word-break: break-word;
-      font-size: 0.16rem;
+      font-size: 0.290909rem;
+      margin-top: 0.181818rem;
       span{
         color: #0e90d2;
       }
       .last-article{
         float: left;
-        padding: 10px;
+        padding: 0.181818rem;
         &:hover{
         	color:#6495ed;
         }
       }
       .first-article{
         float:right;
-        padding: 10px;
+        padding: 0.181818rem;
         &:hover{
           color:#6495ed;
         }
@@ -268,13 +291,9 @@ const highlightCode = () => {
   }
 }
 
-  @media (max-width: 992px) {
-    .acticles{
-      // padding: 0.363636rem 0.10909rem;
-      // margin: 0;
-      // .text{
-      //   padding: 0 0.090909rem;
-      // }
+  @media (max-width:450px) {
+    .back{
+      display: none;
     }
 
   }

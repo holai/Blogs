@@ -3,6 +3,7 @@
 // import Vue from 'vue'
 import 'babel-polyfill'
 import 'url-search-params-polyfill';
+
 import App from './App'
 import Route from './router'
 // import '@/assets/styles/gl.scss'
@@ -15,7 +16,7 @@ import Route from './router'
 // import live2d from 'live2d-vue'
 // Vue.use(live2d);
 
-axios.defaults.baseURL = 'http://47.100.99.23';
+axios.defaults.baseURL = 'https://my.houlai.fun:444/';
 // axios.defaults.baseURL = 'http://localhost/';
 Vue.prototype.$axios= axios
 Vue.config.productionTip = false

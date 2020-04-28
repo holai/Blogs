@@ -52,16 +52,16 @@ a{
   -webkit-backface-visibility: hidden;
 }
 ::-webkit-scrollbar{
-  width: 2px;
-  height: 2px;
+  width: 8px;
+  height: 5px;
 }
 ::-webkit-scrollbar-track-piece{
-  background-color: rgba(0, 0, 0, 0.2);
+  // background-color: rgba(0, 0, 0, 0.2);
   -webkit-border-radius: 6px;
 }
 ::-webkit-scrollbar-thumb:vertical{
-  height: 5px;
-  background-color: rgba(125, 125, 125, 0.7);
+  height: 3px;
+  background-color: rgba(144,147,153,.3);
   -webkit-border-radius: 6px;
 }
 ::-webkit-scrollbar-thumb:horizontal{
@@ -81,9 +81,9 @@ body{
   -webkit-text-size-adjust: none;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
-html{
-  overflow-y: scroll;
-}
+// html{
+//   overflow-y: scroll;
+// }
 
 /*清除浮动*/
 .clearfix:before,

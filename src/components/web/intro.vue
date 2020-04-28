@@ -2,9 +2,10 @@
   <div class="intro">
         <div class="head">
           <div class="touxiang">
-             <el-avatar id="tx" class="tx" :size="75" :src="br" >
+             <el-avatar id="tx" class="tx" :size="75"  src="@/assets/tx.png" alt="后来的路"  >
               <img src="https://cube.elemecdn.com/e/fd/0fc7d20532fdaf769a25683617711png.png"/>
              </el-avatar>
+              <!-- <img class="tx" id="tx" width="75"  src="@/assets/tx.png" alt="后来的路"  /> -->
              <i class="j_item">应届</i>
              <i class="j_item">大专</i>
              <i class="j_item">19</i>
@@ -163,7 +164,6 @@
     	name:"intro",
       data() {
         return {
-          br:"http://47.100.99.23/src/assets/tx.png",
           tableData: [{
             name: '个人博客',
             href: 'http://47.100.99.23/',
@@ -209,11 +209,15 @@
    width: 100%;
  }
   .intro{
+    padding: .5rem;
     overflow: hidden;
     width: 1000px;
     margin: 5px auto;
     padding: 10px 10px;
     width:794px;
+    background: #fff;
+    padding: .4rem;
+    border-radius: 4px;
     .head{
       display:flex;
       .touxiang{

@@ -23,7 +23,7 @@
 	#app{
 		width: 100%;
 		height: 100%;
-    background-color: #FEFEFE;
+    background-color: #f9f9f9;
 	}
   [v-clock] { display:none }
 
