@@ -15,12 +15,16 @@ import Route from './router'
 
 // import live2d from 'live2d-vue'
 // Vue.use(live2d);
-
-axios.defaults.baseURL = 'https://my.houlai.fun:444/';
-// axios.defaults.baseURL = 'http://localhost/';
+axios.defaults.baseURL = 'https://my.houlai.fun:444/'; //上线
+// axios.defaults.baseURL = 'http://localhost/';   //测试
 Vue.prototype.$axios= axios
-Vue.config.productionTip = false
 axios.defaults.withCredentials=true;
+
+
+Vue.config.productionTip = false
+
+
+
 
 // Vue.use(ElementUI);
 

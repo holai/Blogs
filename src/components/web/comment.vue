@@ -253,7 +253,10 @@
   .comment{
       color: #4d4d4d;
 	  box-sizing: border-box;
-	  margin: 0.201818rem;
+     padding: 0.201818rem;
+     background-color: #FFFFFF;
+     margin: 0.5rem 0;
+     padding-bottom: 1.18181rem;
 	  // margin-bottom: 1.818181rem;
 	.cz{
 		box-sizing: border-box;
@@ -339,7 +342,7 @@
 		}
     .commentTs{
       text-align: center;
-      font-size: 18px;
+      font-size: 0.290909rem;
     }
 	}
 

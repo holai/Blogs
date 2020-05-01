@@ -105,7 +105,7 @@ export default {
 
   #box{
     // overflow: auto;
-    background: #f9f9f9;
+    background: #f4f4f4;
     padding-top: 0.3rem;
   }
   
