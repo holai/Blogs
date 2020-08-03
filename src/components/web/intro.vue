@@ -2,13 +2,13 @@
   <div class="intro">
         <div class="head">
           <div class="touxiang">
-             <el-avatar id="tx" class="tx" :size="75"  src="@/assets/tx.png" alt="后来的路"  >
+             <el-avatar id="tx" class="tx" :size="75"  src="/src/assets/tx.png" alt="后来的路"  >
               <img src="https://cube.elemecdn.com/e/fd/0fc7d20532fdaf769a25683617711png.png"/>
              </el-avatar>
               <!-- <img class="tx" id="tx" width="75"  src="@/assets/tx.png" alt="后来的路"  /> -->
              <i class="j_item">应届</i>
              <i class="j_item">大专</i>
-             <i class="j_item">19</i>
+             <i class="j_item">20</i>
              <i class="j_item">河南</i>
           </div>
           <div class="js">
@@ -30,7 +30,7 @@
               <ul>
                 <li>博客地址:</li>
                 <li>GitHub：<a href="https://github.com/holai?tab=repositories" target="_blank">https://github.com/holai</a></li>
-                <li>个人网站：<a href="http://47.100.99.23" target="_blank">http://47.100.99.23/</a></li>
+                <li>个人网站：<a href="https://houlai.fun" target="_blank">https://houlai.fun/</a></li>
               </ul>
 
             </div>

@@ -10,6 +10,7 @@ const about = ()=> import('@/components/web/about')
 const intro = ()=> import('@/components/web/intro')
 const essay = ()=> import('@/components/web/essay')
 const blog = ()=> import('@/components/web/blog')
+const btInfo = ()=> import('@/components/web/btInfo')
 
 // import admin from '@/components/admin/admin'
 // import login from '@/components/admin/login'
@@ -58,7 +59,11 @@ export default new VueRouter({
       {
         path:'/intro',
         component:intro
-      }
+      },
+      {
+        path:'/btInfo',
+        component:btInfo
+      },
 
 		]
 	},

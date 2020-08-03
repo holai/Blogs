@@ -116,12 +116,12 @@
 
 <style scoped="scoped" lang="scss">
   //动画时间
-    .duration{
-      transition-duration: 1.2s;
-      -moz-transition-duration: 1.2s; /* Firefox 4 */
-      -webkit-transition-duration: 1.2; /* Safari 和 Chrome */
-      -o-transition-duration: 1.2s; /* Opera */
-    }
+    // .duration{
+    //   transition-duration: 1.2s;
+    //   -moz-transition-duration: 1.2s; /* Firefox 4 */
+    //   -webkit-transition-duration: 1.2; /* Safari 和 Chrome */
+    //   -o-transition-duration: 1.2s; /* Opera */
+    // }
   // 文章显示
   .articleItem{
     flex: 1;

@@ -80,6 +80,7 @@ export default {
 	margin: 20px auto;
 	// max-width: 800px;
   max-width: 1000px;
+  min-height: 70vh;
   padding: 0.272727rem;
 	.intro{
 		text-align: center;

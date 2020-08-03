@@ -75,3 +75,26 @@ module.exports = {
     bundleAnalyzerReport: process.env.npm_config_report
   }
 }
+
+// this.data.type === 2 
+//   ?
+//     this.data.user 
+//      ? 
+//         this.data.user.real_name || this.data.user.nick_name || '' 
+//      :  ''
+//   : 
+//     this.data.slide && this.data.slide.user
+//      ?
+//        this.data.slide.user.real_name || this.data.slide.user.nick_name || ''
+//      :
+//        ''
+       
+       
+       
+//    let  [user = this.data.user] = [this.data.slide && this.data.slide.user]
+//    let [name = user.real_name]  =   [user.nick_name]
+//    let [namex = ''] = [name];
+   
+   
+   
+  // let [user = ''] =  [this.data.type === 2 ?   this.data.user  : this.data.slide && this.data.slide.user];

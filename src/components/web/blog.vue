@@ -194,10 +194,7 @@
 <style lang="scss" scoped="scoped">
   //动画时间
     .duration{
-      transition-duration: 1.2s;
-      -moz-transition-duration: 1.2s; /* Firefox 4 */
-      -webkit-transition-duration: 1.2; /* Safari 和 Chrome */
-      -o-transition-duration: 1.2s; /* Opera */
+      transition-duration: 1s;
     }
   .blogs {
 

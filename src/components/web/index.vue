@@ -4,7 +4,7 @@
       <topnav v-show="navAm" class="duration"    id="nav"></topnav>
     </transition>
 
-    <transition name="el-zoom-in-center"  >
+    <transition name="el-fade-in-linear"  >
       <div v-show="navAm" class="box duration" ref="box" id="box">
       <!--      <keep-alive>
             <router-view id="content"  />
@@ -92,11 +92,12 @@ export default {
   //动画时间
     .duration{
       transition-duration: 1.2s;
-      -moz-transition-duration: 1.2s; /* Firefox 4 */
-      -webkit-transition-duration: 1.2; /* Safari 和 Chrome */
-      -o-transition-duration: 1.2s; /* Opera */
+      // -moz-transition-duration: 1.2s; /* Firefox 4 */
+      // -webkit-transition-duration: 1.2; /* Safari 和 Chrome */
+      // -o-transition-duration: 1.2s; /* Opera */
     }
   #indexa{
+    // height: 100%;
     margin-top: 1.090909rem;
   }
   #content{
@@ -108,11 +109,11 @@ export default {
     background: #f4f4f4;
     padding-top: 0.3rem;
   }
-  
+
   @media (max-width: 795px) {
     #box{
       padding-top: 0rem;
     }
-  
+
   }
 </style>
