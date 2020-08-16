@@ -2,7 +2,7 @@
   <div class="intro">
         <div class="head">
           <div class="touxiang">
-             <el-avatar id="tx" class="tx" :size="75"  src="/src/assets/tx.png" alt="后来的路"  >
+             <el-avatar id="tx" class="tx" :size="75"  src="https://houlai.fun/src/assets/tx.png" alt="后来的路"  >
               <img src="https://cube.elemecdn.com/e/fd/0fc7d20532fdaf769a25683617711png.png"/>
              </el-avatar>
               <!-- <img class="tx" id="tx" width="75"  src="@/assets/tx.png" alt="后来的路"  /> -->

@@ -38,7 +38,7 @@
         se:"",  // 定时器 执行
         out:"", // 定时器 循环
         aritcledh:true,    //显示动画
-        isUrl:"https://my.houlai.fun:444/"
+        isUrl:"https://houlai.fun/"
       }
     },props:{
       "blogs":"",

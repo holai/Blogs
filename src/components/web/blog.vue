@@ -1,6 +1,8 @@
 <template>
      <transition name="el-zoom-in-center"  >
-    <div   class="blogs " :style="isadmin ? 'width:100%;flex-direction: column;' : '' ">
+       <div>
+
+      <div   class="blogs " :style="isadmin ? 'width:100%;flex-direction: column;' : '' ">
 
       <div class="leftBox" v-loading="loading_articles">
         <!-- 筛选标签 -->
@@ -38,9 +40,12 @@
       <!--  右侧 统计 -->
       <statistics  v-if="!this.isadmin" @search="lablesactive" />
 
-      <el-pagination id="pageination" background :hide-on-single-page="true" class="page" layout="prev, pager, next"
-        :page-size="page_size" :total="page_max" @current-change="pageClick">
-      </el-pagination>
+
+
+    </div>
+    <el-pagination id="pageination" background :hide-on-single-page="true" class="page" layout="prev, pager, next"
+      :page-size="page_size" :total="page_max" @current-change="pageClick">
+    </el-pagination>
 
     </div>
     </transition>
@@ -291,9 +296,11 @@
       min-width: 5rem;
     }
     // page
-    .page{
-      text-align: center;
-    }
+
+  }
+  .page{
+    margin-top: 0.272727rem;
+    text-align: center;
   }
 
 

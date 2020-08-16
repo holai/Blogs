@@ -30,7 +30,7 @@ module.exports = {
     'axios':'axios',
     'element-ui':'Element',
     'hljs':'highlight',
-    // 'live2d-vue':'live2d'
+    // 'live2dVue':'live2d-vue'
     // 'live2d4vue':'live2d4vue'
   },
   output: {

@@ -13,7 +13,7 @@
 			<!-- <el-menu-item index="/dddd">留言</el-menu-item> -->
 			<el-menu-item index="/about" >关于我</el-menu-item>
 			<el-menu-item index="/intro" >求职简介</el-menu-item>
-			<el-menu-item @click="open" >练习项目集</el-menu-item>
+			<el-menu-item index="" @click="open" >练习项目集</el-menu-item>
 		<div class="title"><strong><router-link to="login" >路</router-link></strong>   <a href="http://houlai.fun"> 个人网站</a></div>
 		</el-menu>
     <el-drawer
@@ -32,7 +32,7 @@
       	<!-- <el-menu-item index="/dddd">留言</el-menu-item> -->
       	<el-menu-item index="/about" @click="table=!table">关于我</el-menu-item>
         <el-menu-item index="/intro" @click="table=!table">求职简介</el-menu-item>
-        <el-menu-item @click="open" >练习项目集</el-menu-item>
+        <el-menu-item index="" @click="open" >练习项目集</el-menu-item>
      </el-menu>
       <!--  右侧 统计 -->
       <statistics :isSeek="false" />
@@ -58,7 +58,12 @@
     },
     computed: {
 	  	activeIndex() {
-	  		return this.$route.path;
+        let path = this.$route.path;
+        if(path == '/essay'){
+          return '/'
+        }else{
+          return this.$route.path;
+        }
 	  	}
 	  },
     components:{
