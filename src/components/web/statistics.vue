@@ -23,7 +23,7 @@
       <h6>最多浏览：</h6>
       <ul>
         <router-link  v-for="(content,index) in articlelist" :to="{name: 'essay', query: { id: content.id }}" :key="index">
-          <li>
+          <li class="Brtitle" :title="content.title">
             {{content.title}}
           </li>
         </router-link>
@@ -155,6 +155,10 @@
         font-size: 0.236363rem;
         padding-left: 0.181818rem;
         li{
+          max-width: 4.090909rem;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
           line-height: 1.8;
           cursor:pointer;
         }

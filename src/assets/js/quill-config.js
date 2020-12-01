@@ -13,12 +13,19 @@ const toolOptions = [
   [{'font': []}],
   [{'align': []}],
   [{'clean':'源码编辑'}],
+
   ['link', 'image', 'video'],
-  ['sourceEditor']     //新添加的工具
+  ['sourceEditor'],     //新添加的工具
+  ['updateImg']
 ];
 const handlers = {
   isOn:false,
   shadeBox:null,
+  updateImg:function(){
+    let up = document.querySelector('.ql-updateImg');
+    file.click();
+
+  },
   sourceEditor: function(){     //添加工具方法
    let text =this.container.nextElementSibling.firstChild;
    let textarea= document.getElementById("show");
@@ -45,7 +52,81 @@ const handlers = {
     }
   }
 };
+const file  =document.createElement("input");
+// document.addElement(file);
+file.type="file";
+// file.onchange=function(ev){
+//   console.log(ev);
+//         // 生成一个文件读取的对象
+//             const reader = new FileReader();
+//             reader.onload = function (ev) {
+//                 // base64码
+//                 var imgFile =ev.target.result;//或e.target都是一样的
+//                   console.log(imgFile)
+//             }
+//             //发起异步读取文件请求，读取结果为data:url的字符串形式，
+//           // let imgBase =   reader.readAsDataURL(img.files[0]);
 
+// };
+file.addEventListener('change', function(){
+    //如果未传入文件则中断
+    if(file.files[0] == undefined){
+        return;
+    }
+
+    var img = file.files[0];
+    // console.log(img);
+    //FileReader可直接将上传文件转化为二进制流
+    var reader = new FileReader();
+    reader.readAsDataURL(img);//转化二进制流，异步方法
+    reader.onload = async function(){//完成后this.result为二进制流
+        // console.log(this.result);
+        var base64Str = this.result;
+        // console.log(this.result)
+        // var startNum = base64Str.indexOf("base64,");
+        // startNum = startNum*1 + 7;
+        // console.log(base64Str)
+        let data  = await compress(base64Str);
+        console.log(data);
+        //去除前部格式信息（如果有需求）
+        // var baseStr = base64Str.slice(startNum);　
+        var editor  =document.getElementsByClassName("ql-editor")[0];
+        let image  =document.createElement("img");
+        image.src=data;
+        editor.appendChild(image);
+    }　　
+})
+
+// 对图片进行压缩
+function compress(img) {
+  return new Promise(function(res,rej){
+    //新建一个img标签
+    var image = new Image();
+    image.src = img;
+    let imageWidth,imageHeight;
+    image.onload=function(){
+      imageWidth = image.width *0.5;
+      imageHeight = image.height *0.5;
+
+      var canvas = document.createElement('canvas');
+      var context = canvas.getContext('2d');
+      //压缩后图片的大小
+      var data;
+
+      canvas.width = imageWidth;
+      canvas.height = imageHeight;
+      context.drawImage(image, 0, 0, imageWidth, imageHeight);
+      data = canvas.toDataURL('image/jpeg');//.replace("data:image/jpeg;base64,","")
+      // var length=data.toString().length;
+      // console.log(imageWidth,imageHeight,data)
+      // if(length>1024*200){
+      //     res compress(data);
+      // }
+      // image.src=data;
+      res(data);
+    }
+  })
+}
 export default {
   placeholder: '',
   theme: 'snow',  // 主题
@@ -59,5 +140,11 @@ export default {
     let sourceEditorButton = document.querySelector('.ql-sourceEditor');
     sourceEditorButton.style.cssText = "width:80px; border:1px solid #ccc; border-radius:5px;";
     sourceEditorButton.innerText="源码编辑";
+
+    let updateImg = document.querySelector('.ql-updateImg');
+
+
+    updateImg.style.cssText = "width:80px; border:1px solid #ccc; border-radius:5px;";
+    updateImg.innerText="上传图片";
   }
 };

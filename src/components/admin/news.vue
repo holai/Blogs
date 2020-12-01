@@ -49,10 +49,12 @@
     <el-dialog title="确认发布" :visible.sync="dialogFormVisible"  width="10rem">
       <el-form >
         <el-form-item label="上传封面" >
+          <!--             action="/admin/imageFile" -->
           <el-upload
+            name="myPhoto"
             v-loading="loading"
             class="avatar-uploader"
-            action="/admin/imageFile"
+            action="http://my.zol.com.cn/index.php?c=Ajax_User&a=uploadImg"
             :show-file-list="false"
             :on-success="handleAvatarSuccess"
             :before-upload="beforeAvatarUpload">
@@ -120,7 +122,7 @@ export default {
         if (isJPG) {
           this.$message.error('上传图片!');
         }else if (!isLt2M) {
-          this.$message.error('上传头像图片大小不能超过 4MB!');
+          this.$message.error('上传图片大小不能超过 4MB!');
         }else{
           this.loading=true;
           return true;
@@ -178,7 +180,8 @@ export default {
         .catch(error=>{
           console.log(error);
         })
-      }
+      },
+
     },
     computed: {
     },mounted(){
@@ -224,7 +227,7 @@ export default {
         .catch(error=>{
           console.log(error)
         })
-  
+
     },
 
 }

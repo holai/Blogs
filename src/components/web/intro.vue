@@ -46,8 +46,7 @@
             </el-divider>
             <ul>
             	<li>前端开发工程师</li>
-              <li>网页设计师</li>
-              <li>后端开发工程师</li>
+              <li>网页开发设计</li>
             </ul>
         </div>
 
@@ -63,7 +62,7 @@
                 前端开发
                 <div>
                   <div class="txt">
-                   H5 JS JQ echart webpack Vue 小程序
+                   css3 H5 JS JQ 响应式 echart webpack Vue 小程序 node
                   </div>
                   <el-progress :text-inside="true" :format="format" :stroke-width="25" :percentage="50">ddd</el-progress>
                 </div>
@@ -82,14 +81,22 @@
                 移动开发
                 <div>
                   <div class="txt">
-                   Java Layout XML Okhttp
+                   Java
                   </div>
                   <el-progress :text-inside="true" :format="format" :stroke-width="25" :percentage="20" status="warning"></el-progress>
                 </div>
               </div>
-              <div class="in">
-                对 浏览器兼容问题 H5 CSS3 响应式设计 前端工程化 性能优化  非常熟悉。
-              </div>
+              <pre class="in">
+                熟悉 CSS3  H5  响应式页面开发
+                熟练 JavaScript  掌握 ES6 以上常用语法
+                熟悉使用 Vue 开发项目
+                熟悉 小程序开发 与  云开发
+                熟悉前端工程化 页面兼容性  熟悉 Webpack 开发
+                了解Node.js：express框架
+                了解 Sass 等css预处理器
+                了解 uni-app 开发
+                对 Java 移动开发和后端开发  有一定了解
+              </pre>
             </div>
         </div>
 
@@ -101,10 +108,10 @@
               </div>
             </el-divider>
             <el-table
-			  :fit="true"
+              :fit="true"
               class="tab"
               :data="tableData"
-              style="width: 100%">
+              >
                 <el-table-column
                   label="项目名称">
                     <div slot-scope="scope">
@@ -133,21 +140,23 @@
               </div>
             </el-divider>
              <el-timeline class="lc">
-                <el-timeline-item timestamp="2019/2/12" placement="top">
+               <el-timeline-item timestamp="2020/8/1" placement="top">
+                 <el-card>
+                   <p>参加河南省职业技能大赛 移动应用开发  获得三等奖</p>
+                 </el-card>
+               </el-timeline-item>
+                <el-timeline-item timestamp="2020/5/0" placement="top">
                   <el-card>
-                    <p>参加*********,************** *******</p>
+                    <p>参加 高校微信小程序应用开发赛,获得 全国三等奖  华中赛区一等奖</p>
                   </el-card>
                 </el-timeline-item>
-                <el-timeline-item timestamp="2018/9/1" placement="top">
+
+               <el-timeline-item timestamp="2018/6/1" placement="top">
                   <el-card>
-                    <p>于 ****** ************** *******</p>
+                    <p>在亨通源科技公司实习 前端开发   </p>
                   </el-card>
                 </el-timeline-item>
-                <el-timeline-item timestamp="2018/6/1" placement="top">
-                  <el-card>
-                    <p>在 ************** ******* </p>
-                  </el-card>
-                </el-timeline-item>
+
               </el-timeline>
         </div>
 
@@ -168,23 +177,30 @@
             name: '个人博客',
             href: 'http://47.100.99.23/',
             th:'Vue,Element,Axios,Java',
-            for: '自己设计的个人博客网站'
+            for: '自己设计的个人博客网站 响应式'
           },{
             name: '天气预报',
             href: 'http://47.100.99.23/weather/',
             th:'Vue,echarts,axios',
             for: '响应式的天气预报网站 有图表显示'
           },{
-            name: '王校长吃面包',
-            href: 'http://47.100.99.23/wxz',
-            th:'JQuery',
-            for: '学习Js时写的小游戏，以大鱼吃小鱼的形式...'
+            name: '智慧社区',
+            href: 'http://47.100.99.23/community/',
+            th:'Echarts',
+            for: '假期实习 echarts bootstrap 项目'
           },{
-            name: '响应式网站1',
-            href: 'http://47.100.99.23/dx',
-            th:'JQuery,bootstrap，...',
-            for: '响应式设计'
-          }]
+            name: 'X校园',
+            href: '暂无',
+            th:'微信小程序',
+            for: ' 获得高校微信小程序开发赛国三 '
+          },{
+            name: '花店 JSP',
+            href: 'https://github.com/holai/Flower',
+            th:'JSP',
+            for: ' 毕设 '
+          },
+
+          ]
         }
       },
       methods: {
@@ -344,11 +360,17 @@
           }
         }
         .in{
-          font-size: 0.2rem;
-          line-height: 1.1em;
+          color: #000000;
+          font-size: 0.23rem;
+          line-height: 1.8em;
           text-align: center;
-          font-weight: 400;
-          padding-left: 0.363636rem;
+              padding: 7px 0;
+              color: #61687c;
+              white-space: pre-wrap;
+              overflow: hidden;
+              word-break: break-all;
+          // font-weight: 400;
+          // padding-left: 0.363636rem;
         }
         .item>div{
           margin-left: 8px;
@@ -360,7 +382,6 @@
       margin-top:20px;
       .tab{
         font-size:0.218181rem;
-        padding: 0 0.90909rem;
 		// table.el-table__body{
 		// 	width: 100% !important;
 		// }
