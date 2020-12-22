@@ -2,10 +2,10 @@
   <div class="intro">
         <div class="head">
           <div class="touxiang">
-             <el-avatar id="tx" class="tx" :size="75"  src="https://houlai.fun/src/assets/tx.png" alt="后来的路"  >
+             <el-avatar id="tx" class="tx" :size="75"  src="https://houlai.fun/src/assets/tx.png" alt="每用博客"  >
               <img src="https://cube.elemecdn.com/e/fd/0fc7d20532fdaf769a25683617711png.png"/>
              </el-avatar>
-              <!-- <img class="tx" id="tx" width="75"  src="@/assets/tx.png" alt="后来的路"  /> -->
+              <!-- <img class="tx" id="tx" width="75"  src="@/assets/tx.png" alt="每用博客"  /> -->
              <i class="j_item">应届</i>
              <i class="j_item">大专</i>
              <i class="j_item">20</i>
@@ -142,7 +142,7 @@
              <el-timeline class="lc">
                <el-timeline-item timestamp="2020/8/1" placement="top">
                  <el-card>
-                   <p>参加河南省职业技能大赛 移动应用开发  获得三等奖</p>
+                   <p>参加 河南省高等职业教育技能大赛(移动应用开发)获得一等奖</p>
                  </el-card>
                </el-timeline-item>
                 <el-timeline-item timestamp="2020/5/0" placement="top">
@@ -170,7 +170,7 @@
 
 <script>
     export default {
-    	name:"intro",
+    	name: 'intro',
       data() {
         return {
           tableData: [{

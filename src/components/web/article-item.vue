@@ -38,7 +38,8 @@
         se:"",  // 定时器 执行
         out:"", // 定时器 循环
         aritcledh:true,    //显示动画
-        isUrl:"https://houlai.fun/"
+        // isUrl:"https://houlai.fun/"
+        isUrl:"http://localhost/"
       }
     },props:{
       "blogs":"",
@@ -93,8 +94,9 @@
       if (!!window.ActiveXObject || "ActiveXObject" in window){
         let content= document.querySelector(".content");
         let item = document.querySelector(".item");
-        content.style.height=item.offsetHeight*this.blogs.length+320+"px"
-
+        if(content != null && item != null){
+          content.style.height=item.offsetHeight*this.blogs.length+320+"px";
+        }
 
          // content.style.height=item.offsetHeight*12+"px";
       }
@@ -124,7 +126,7 @@
     // }
   // 文章显示
   .articleItem{
-    flex: 1;
+    // flex: 1;
     .item{
       cursor: pointer;
       margin: 0.363636rem;

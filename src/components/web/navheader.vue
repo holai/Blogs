@@ -14,7 +14,7 @@
 			<el-menu-item index="/about" >关于我</el-menu-item>
 			<el-menu-item index="/intro" >求职简介</el-menu-item>
 			<el-menu-item index="" @click="open" >练习项目集</el-menu-item>
-		<div class="title"><strong><router-link to="login" >路</router-link></strong>   <a href="http://houlai.fun"> 个人网站</a></div>
+		<div class="title"><strong><router-link to="login" >每用</router-link></strong>   <a href="http://houlai.fun"> 个人网站</a></div>
 		</el-menu>
     <el-drawer
       class="drawer"

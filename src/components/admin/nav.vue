@@ -31,6 +31,13 @@
            <i class="el-icon-edit"></i>
            <span slot="title">个人信息</span>
     			  </el-menu-item>
+            
+            <el-menu-item index="/chart" > <!-- disabled -->
+            <!-- <router-link  to="/food" ></router-link> -->
+            <i class="el-icon-date"></i>
+            <span slot="title">浏览分析</span>
+             </el-menu-item>
+            
     </el-menu>
     <i @click="isCollapse=!isCollapse" :class="isCollapse ? 'el-icon-right fh' : 'el-icon-back fh'"></i>
   </div>

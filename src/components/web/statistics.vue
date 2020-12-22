@@ -8,7 +8,7 @@
       </el-input>
     </div>
     <div class="shadow stat">
-      <img @click="xz" :class="xzdh" src="@/assets/tx.png" width="80px" alt="后来的路" />
+      <img @click="xz" :class="xzdh" src="@/assets/tx.png" width="80px" alt="每用博客" />
       <!-- <el-avatar :size="50" :src="txUrl"></el-avatar> -->
       <div class="text">
         <span>{{this.articleCount}}</span>篇文章,<span>{{this.browseCount}}</span>次访问,<span>{{commentCount}}</span>条评论

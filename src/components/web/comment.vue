@@ -54,7 +54,7 @@
 	   <div class="content">
 		   <div class="item" v-for="(item,index) in conmmentDataSort" :key="index">
 			   <div class="jj">
-				   <el-image class="avatar" :src="'https://avatars0.githubusercontent.com/' + item.userName" lazy>
+				   <el-image class="avatar" :src="item.avatar" lazy>
 					 <div slot="error" class="image-slot">
 					   <img width="40px" height="40px" src="https://cube.elemecdn.com/e/fd/0fc7d20532fdaf769a25683617711png.png"/>
 					 </div>
@@ -82,9 +82,9 @@
 	     <!-- <span></span> -->
        <!-- 暂停使用 -->
        <!-- <div style="color: #C21F39;text-align: center;"> 网站备案删除  暂停使用</div> -->
-		 <div v-if="isLogin" style="display:flex;">
-			<svg @click="openWindow"  style="flex:1;cursor: pointer;" t="1576420398647" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3656" width="128" height="128"><path d="M512.465 98.744c-236.05-2.401-429.41 187.034-431.998 423.242 0.894 183.912 120.176 346.283 295.332 402.018 21.6 3.93 29.451-9.04 29.451-20.436v-71.916c-120.17 25.545-145.7-56.59-145.7-56.59a112.364 112.364 0 0 0-47.914-62.089c-39.272-25.937 3.141-25.545 3.141-25.545a90.702 90.702 0 0 1 65.978 43.624c25.358 43.993 81.26 59.548 125.678 34.976a91.569 91.569 0 0 1 27.487-56.59c-95.825-10.615-196.36-46.768-196.36-209.067a163.13 163.13 0 0 1 43.591-114.358 148.652 148.652 0 0 1 4.32-111.609c15.896-35.223 36.525-11.397 117.815 43.229a419.24 419.24 0 0 1 216.002 0c82.471-54.626 117.82-43.229 117.82-43.229a148.657 148.657 0 0 1 4.32 111.61 163.145 163.145 0 0 1 45.945 113.57c0 162.695-101.321 198.458-196.36 209.067a98.273 98.273 0 0 1 29.452 78.594v115.933c0 13.752 7.856 24.756 29.457 20.43 174.63-56.071 293.466-218.106 294.545-401.622C941.878 285.778 748.52 96.343 512.465 98.744" fill="#231F20" p-id="3657"></path></svg>
-
+		 <div v-if="isLogin" style="display:flex;; align-items: center;justify-content: space-around;">
+          <svg @click="openWindow('github')"  style="cursor: pointer;" t="1576420398647" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3656" width="128" height="128"><path d="M512.465 98.744c-236.05-2.401-429.41 187.034-431.998 423.242 0.894 183.912 120.176 346.283 295.332 402.018 21.6 3.93 29.451-9.04 29.451-20.436v-71.916c-120.17 25.545-145.7-56.59-145.7-56.59a112.364 112.364 0 0 0-47.914-62.089c-39.272-25.937 3.141-25.545 3.141-25.545a90.702 90.702 0 0 1 65.978 43.624c25.358 43.993 81.26 59.548 125.678 34.976a91.569 91.569 0 0 1 27.487-56.59c-95.825-10.615-196.36-46.768-196.36-209.067a163.13 163.13 0 0 1 43.591-114.358 148.652 148.652 0 0 1 4.32-111.609c15.896-35.223 36.525-11.397 117.815 43.229a419.24 419.24 0 0 1 216.002 0c82.471-54.626 117.82-43.229 117.82-43.229a148.657 148.657 0 0 1 4.32 111.61 163.145 163.145 0 0 1 45.945 113.57c0 162.695-101.321 198.458-196.36 209.067a98.273 98.273 0 0 1 29.452 78.594v115.933c0 13.752 7.856 24.756 29.457 20.43 174.63-56.071 293.466-218.106 294.545-401.622C941.878 285.778 748.52 96.343 512.465 98.744" fill="#231F20" p-id="3657"></path></svg>
+          <img  @click="openWindow('qq')" width="100" height="100" style="cursor: pointer;" src="../../assets/QQ_C.png" />
      </div>
 		 <div v-if="!isLogin" style="width:100%;text-align: center;font-weight: 700;">
 			 登陆成功  您的名字:{{user}}
@@ -114,8 +114,8 @@
 				// only:false,
 				rank:true,
 				conmmentData:[
-					{userName:"houali",date:"2019.12.16 17:14",txt:"顶顶顶顶顶"},
-					{userName:"houlai",date:"2019.12.16 17:14",txt:"CCsdfdsf大师傅犯得上发地方"},
+					// {userName:"houali",date:"2019.12.16 17:14",txt:"顶顶顶顶顶"},
+					// {userName:"houlai",date:"2019.12.16 17:14",txt:"CCsdfdsf大师傅犯得上发地方"},
 				],
 				text:"",
 				dialogVisible: false,
@@ -129,6 +129,7 @@
         if(login){
           let id =this.getOneCookie(login);
           let userName =this.getOneCookie("name");
+          // let avater =this.getOneCookie("avater");
           if(this.text == ""){
             this.textStyle = "textarea_cw";
             this.textPlaceholder = "请填写后再提交!";
@@ -168,15 +169,28 @@
           this.dialogVisible=true;
         }
       },
-      openWindow(){
+      openWindow(paramType){
+        // QC.Login.showPopup({});
+        let url ="";
+        switch( paramType){
+          case 'qq':
+            url = "https://graph.qq.com/oauth2.0/authorize?response_type=code&client_id=101920563&redirect_uri=https://houlai.fun/qq"
+          break;
+          case 'github':
+            url= 'https://github.com/login/oauth/authorize?client_id=0b8a98f25c08fe2c650b';
+        }
+
+
+
+
         var isyd= navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i);
         if(isyd){
              //移动端
-             let url= 'https://github.com/login/oauth/authorize?client_id=0b8a98f25c08fe2c650b';
+             // let url= 'https://github.com/login/oauth/authorize?client_id=0b8a98f25c08fe2c650b';
              location.href = url;
          return;
         }
-        let url = 'https://github.com/login/oauth/authorize?client_id=0b8a98f25c08fe2c650b';
+        // let url = 'https://github.com/login/oauth/authorize?client_id=0b8a98f25c08fe2c650b';
         let name='登陆';                            //网页名称，可为空;
         let iWidth=720;                          //弹出窗口的宽度;
         let iHeight=600;                         //弹出窗口的高度;
@@ -198,6 +212,17 @@
             return;
           }
         },200);
+      },
+      openWindowQQ(){
+
+          var url = "https://graph.qq.com/oauth2.0/authorize?response_type=token&client_id=101920409&redirect_uri=https://houlai.fun/qq"
+          // var params = "?"
+          // params += "response_type=token&"  // 获取回access_token
+          // params += "client_id=101490224&" // 应用的appid
+          // // 登录成功后跳转的代理页面，需要业务实现
+          // params += "redirect_uri=http://localhost:3000/proxy"
+
+
       },
       getOneCookie(objName){
         var arrStr = document.cookie.split("; ");

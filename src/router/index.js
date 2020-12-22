@@ -22,6 +22,7 @@ const btInfo = ()=> import('@/components/web/btInfo')
 const admin = ()=> import('@/components/admin/admin')
 const login = ()=> import('@/components/admin/login')
 const news = ()=> import('@/components/admin/news')
+const chart = ()=> import('@/components/admin/chart')
 const aboutManage = ()=> import('@/components/admin/about-manage')
 const articlesManage = ()=> import('@/components/admin/articles-manage')
 
@@ -85,6 +86,10 @@ export default new VueRouter({
 			  path:'/articlesManage',
 			  component: articlesManage,
 		  },
+          {
+              path:'/chart',
+              component: chart,
+          },
       {
         path:'/aboutManage',
         component: aboutManage,

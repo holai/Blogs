@@ -3,11 +3,11 @@
 	<div class="intro">
     <div style="height: 100px;width: 100px;margin: 0 auto;border:1px #eee solid;border-radius: 100%;">
     <transition name="el-zoom-in-bottom">
-      <img class="duration"  v-show="txdh"  src="@/assets/tx.png" alt="后来的路"  />
+      <img class="duration" style="width: 100%;height: 100%;"  v-show="txdh"  src="@/assets/tx.png" alt="每用博客"  />
     </transition>
     </div>
 		<div class="introtext">
-			路 - 自由职业者 (无业)
+			XX - 自由职业者 (无业)
 			<div>
 				<el-tag>懒癌晚期</el-tag>
 				<el-tag type="success">直男癌</el-tag>

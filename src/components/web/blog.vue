@@ -9,9 +9,10 @@
         <div class="lable" >
           <!-- <el-tag @click="lablesactive('')" :class="(count=='') ? 'lablecolor' : '0'">全部</el-tag> -->
           <el-tag
+           style="user-select:none;"
             v-for="(i,index) in lables" :key="index"
             @click="lablesactive(lables[index])"
-            :class="count==lables[index] ? 'lablecolor' : '0'"
+            :class=" count==lables[index] ? 'lablecolor' : '0'  "
             :closable="isadmin" :disable-transitions="false"
             @close="open(index)">{{i}}</el-tag>
           <el-input
@@ -242,6 +243,7 @@
         background-color: rgba(245, 108, 108, .1);
         border-color: rgba(245, 108, 108, .2);
         color: #f56c6c;
+        user-select:none
       }
     }
     // 主页 主页展示

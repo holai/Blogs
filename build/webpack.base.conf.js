@@ -30,6 +30,8 @@ module.exports = {
     'axios':'axios',
     'element-ui':'Element',
     'hljs':'highlight',
+    // 'vue-echarts':'vue-echarts',
+    // 'echarts':'echarts'
     // 'live2dVue':'live2d-vue'
     // 'live2d4vue':'live2d4vue'
   },
@@ -58,7 +60,7 @@ module.exports = {
       {
         test: /\.js$/,
         loader: 'babel-loader',
-        include: [resolve('src'), resolve('test'), resolve('node_modules/webpack-dev-server/client'),resolve('node_modules/live2d-vue')]
+        include: [resolve('src'), resolve('test'), resolve('node_modules/webpack-dev-server/client'),resolve('node_modules/live2d-vue'),resolve('node_modules/vue-echarts'),resolve('node_modules/resize-detector')]
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,

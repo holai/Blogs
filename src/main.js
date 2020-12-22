@@ -6,6 +6,8 @@ import 'url-search-params-polyfill';
 
 import App from './App'
 import Route from './router'
+
+
 // import '@/assets/styles/gl.scss'
 // import axios from "axios"
 // import ElementUI from 'element-ui';
@@ -16,8 +18,8 @@ import Route from './router'
 // import live2d from 'live2d-vue'
 // Vue.use(live2d);
 // axios.defaults.baseURL = 'https://my.houlai.fun:444/'; //上线
-axios.defaults.baseURL = 'https://houlai.fun'; //上线
-// axios.defaults.baseURL = 'http://localhost/';   //测试
+// axios.defaults.baseURL = 'https://houlai.fun'; //上线
+axios.defaults.baseURL = 'http://localhost/';   //测试
 Vue.prototype.$axios= axios
 axios.defaults.withCredentials=true;
 
@@ -25,6 +27,20 @@ axios.defaults.withCredentials=true;
 Vue.config.productionTip = false
 
 
+
+// import ECharts from 'vue-echarts' // 在 webpack 环境下指向 components/ECharts.vue
+
+// 手动引入 ECharts 各模块来减小打包体积
+// import 'echarts/lib/chart/bar'
+// import 'echarts/lib/component/tooltip'
+
+// 如果需要配合 ECharts 扩展使用，只需要直接引入扩展包即可
+// 以 ECharts-GL 为例：
+// 需要安装依赖：npm install --save echarts-gl，并添加如下引用
+// import 'echarts-gl'
+
+// 注册组件后即可使用
+// Vue.component('v-chart', ECharts)
 
 
 // Vue.use(ElementUI);

@@ -20,7 +20,7 @@
         <!-- <live2d> </live2d> -->
         <live2d v-if="isdesk()" > </live2d>
 
-        <el-backtop style="background-color: rgba(0,0,11,0.8);" target="body" :bottom="100" :right="50"></el-backtop>
+        <el-backtop style="background-color: rgba(10, 10, 10, 0.8);box-shadow: 0 0 6px rgba(25,25,25,1);" target="body" :bottom="100" :right="50"></el-backtop>
 
           <!-- <el-backtop target="body" visibility-height="1"></el-backtop> -->
       </div>

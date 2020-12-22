@@ -54,7 +54,7 @@
             name="myPhoto"
             v-loading="loading"
             class="avatar-uploader"
-            action="http://my.zol.com.cn/index.php?c=Ajax_User&a=uploadImg"
+            action="/admin/imageFile"
             :show-file-list="false"
             :on-success="handleAvatarSuccess"
             :before-upload="beforeAvatarUpload">
@@ -69,6 +69,11 @@
       </div>
     </el-dialog>
 
+
+    <el-upload class="uploader" name="myPhoto" id="quill-img" action="/admin/imageFile" :on-success="uploadAvatarSuccess" ref="upload" list-type="picture-card"
+  accept=".png, .jpg, .jpeg" style="display: none;">
+<i class="el-icon-plus"></i>
+</el-upload>
   </div>
 
 </template>
@@ -181,7 +186,22 @@ export default {
           console.log(error);
         })
       },
+      //编辑器的图片上传
+      uploadAvatarSuccess(res){
+            if(res.code==0){
+              // 获取到当前页面的富文本框
+                let quill = this.$refs.myQuillEditor.quill
+                // 获取光标现在所在的位置上
+                let length = quill.getSelection().index;
+                // quill插入我们刚刚上传成功之后的图片，arr是存在我们服务器上边的地址
+                quill.insertEmbed(length, 'image', res.data);
+                // 调整光标到图片之后的位置上
+                quill.setSelection(length + 1)
+            }else{
+              this.$message.error('失败!');
+            }
 
+      }
     },
     computed: {
     },mounted(){

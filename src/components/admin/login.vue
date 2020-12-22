@@ -1,7 +1,7 @@
 <template>
 	<div class="from" :style="bgimage">
 		<div class="center">
-			<strong class="title">路 _ 后台登陆 </strong>
+			<strong class="title">每用 _ 后台登陆 </strong>
 			<el-input class="text" placeholder="请输入内容" v-model="zh" clearable> </el-input>
 			<el-input class="text" placeholder="请输入密码" v-model="mm" show-password></el-input>
 			<el-button type="primary"  @click="dl" :loading="load">{{load ? "提交中" : "登陆"}}</el-button>

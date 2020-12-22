@@ -117,7 +117,7 @@ const highlightCode = () => {
       },
       openShare(type){
          let url = encodeURIComponent(location.href);
-         let title = '后来的路%7C个人博客';
+         let title = '每用博客%7C个人博客';
          let desc = '';
          let pics = "&pics=http://47.100.99.23/src/assets/tx.png";
          let typeUrl;
