@@ -39,7 +39,7 @@
         out:"", // 定时器 循环
         aritcledh:true,    //显示动画
         // isUrl:"https://houlai.fun/"
-        isUrl:"http://localhost/"
+        isUrl:this.$axios.defaults.baseURL
       }
     },props:{
       "blogs":"",
