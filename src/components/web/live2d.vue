@@ -4,7 +4,7 @@
     div.live2d-panel
       dialogue(v-if="isDialogue" :customDialogue="customDialogue" ref='dialogue')
       transition(name="el-fade-in-linear")
-        live2d(v-if="islive2d"  :modelPath="modelPath" ref='l2dMange')
+        live2d(v-if="islive2d"   :modelPath="modelPath" ref='l2dMange')
     div.tools-panel(v-show="show_tool")
       live2dTools(v-for="(item,index) in toolsData"   :toolsStyle="{'z-index':'100'}" id="tools" :height="item.height"  :key="index" v-if="item.show" :position="position" @click="toolsClick(item)" :width="item.width" :toolsID="item.id" :tabMsg="item.tabMsg" :customDialogue='item.customDialogue' :backgroundColor="item.backgroundColor" ref='tool')
 </template>
@@ -13,7 +13,7 @@
 	import live2d from 'live2d-vue'
 	Vue.use(live2d);
 	// import { quillEditor } from "vue-quill-editor";
-import custom from './custom.js'
+import custom from './custom.js' 
 export default {
   // components:{
   // 	  live2d: () => import('live2d-vue'),
@@ -36,12 +36,13 @@ export default {
     islive2d: false,
     isDialogue: false
   }),
-  mounted(){
+  mounted(){ 
     setTimeout(()=>{
       this.islive2d=true;
       this.isDialogue=true;
       // this.modelPath = 'https://unpkg.com/live2d-widget-model-shizuku@1.0.5/assets/shizuku.model.json';
-      this.modelPath = 'https://houlai.fun/src/assets/model/Tia/model.json'
+      // this.modelPath = 'https://houlai.fun/src/assets/model/Tia/model.json'
+      this.modelPath = this.$axios.defaults.baseURL+'/model/Tia/model.json';
     },2000);
 
     setInterval(()=>{
@@ -67,7 +68,7 @@ export default {
         //   break
         case '换装':
           let con = Math.floor(Math.random()*(76+1));
-          this.$refs.l2dMange.setImgPath('https://houlai.fun/src/assets/model/Tia/textures/'+con+'.png')  //这个是换衣服地址
+          this.$refs.l2dMange.setImgPath(this.$axios.defaults.baseURL+'/model/Tia/textures/'+con+'.png')  //这个是换衣服地址
           break
         case '保存':
           this.$refs.l2dMange.save(`live2d-${Date.now()}.png`)
