@@ -2,9 +2,11 @@
 
 > 个人博客 Vue+Element
 
-## Project Address
-> 47.100.99.23
+## 介绍
 
+https://blog.csdn.net/qq_33950912/article/details/117909307
+ 
+ 
 ## Bug
 > 1.因为模块live2d-vue不能转为ES5导致IE浏览器不能使用，需要使用文件中的 live-2d-vue.common.js(已经手动转化为ES5) 替换掉 node_modules 下的 live2d-vue 下的文件.
 
