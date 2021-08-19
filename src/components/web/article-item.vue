@@ -58,10 +58,10 @@
           live.style.opacity=1;
           this.se=setTimeout(()=>{
                this.out=setInterval(()=>{
-                if(document.querySelector(".dialogue-live2d").style.opacity<=0){
+                if(live.style.opacity<=0){
                   window.clearInterval(this.out);
                 }
-                document.querySelector(".dialogue-live2d").style.opacity=document.querySelector(".dialogue-live2d").style.opacity-0.1;
+                live.style.opacitylive.style.opacity-0.1;
             },200);
              // document.querySelector(".dialogue-live2d").style.opacity=0;
           },5000);

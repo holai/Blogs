@@ -1,7 +1,7 @@
 <template>
 	<div class="admin-body">
 		<navAdmin></navAdmin>
-		<router-view/>
+		<router-view class="body" />
 	</div>
 </template>
 
@@ -42,6 +42,13 @@
     overflow: hidden;
     display: flex;
     display: -ms-flexbox;
+
+    overflow-y: scroll;
+  }
+
+  .admin-body>.body{
+    flex: 1;
+        overflow: auto;
   }
 
 </style>

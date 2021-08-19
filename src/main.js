@@ -19,7 +19,8 @@ import Route from './router'
 // Vue.use(live2d);
 // axios.defaults.baseURL = 'https://my.houlai.fun:444/'; //上线
 // axios.defaults.baseURL = 'https://houlai.fun'; //上线
-axios.defaults.baseURL = 'http://localhost/';   //测试
+// axios.defaults.baseURL = '/'; //上线
+// axios.defaults.baseURL = 'http://localhost/';   //测试
 Vue.prototype.$axios= axios
 axios.defaults.withCredentials=true;
 

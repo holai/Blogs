@@ -8,7 +8,7 @@
 
       <div style="display: flex;justify-content: space-between;width: 100%;">
          <a href="/" class="fh">返回首页</a>
-         <a @click="login=false" class="fh">注册</a>
+         <!-- <a @click="login=false" class="fh">注册</a> -->
       </div>
 		</div>
 
